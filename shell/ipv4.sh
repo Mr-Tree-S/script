@@ -61,9 +61,9 @@ fi
 
 P=/etc/sysconfig/network-scripts/ifcfg-eno16777736
 sed -i 's/dhcp/static/g' $p
-sed 'IPADDR/d'
+sed -i 'IPADDR/d' $p
 sed -i "$ a IPADDR=$ip" $P
-sed 'NETMASK/d'
+sed -i 'NETMASK/d' $p
 sed -i "$ a NETMASK=$mask" $P
 
 service network restart
