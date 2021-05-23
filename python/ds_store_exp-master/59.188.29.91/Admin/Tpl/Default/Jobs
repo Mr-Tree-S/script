@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="__PUB__/Js/jquery.js"></script>
+<script type="text/javascript" src="__PUB__/dropzone/dropzone.js"></script>
+<script type="text/javascript" src="__PUB__/Js/system.js"></script>
+<link href="__PUB__/Css/system.css" type="text/css" rel="stylesheet">
+</head>
+
+<body class="comebody">
+<?php 
+	import('ORG.Util.Dict');
+	$dict = new Dict();
+?>
+<div class="search">
+	<div class="left">搜索</div>
+	<div class="right">
+		<form name="form1" id="form1" action="?m=jobs&a=index" method="post">
+		   <div class="search_row">
+				<div class="search_item">
+				职位名称：<input type="text" name="q_zwmc" value="<?php echo $_REQUEST['q_zwmc'] ?>" class="input" size="15" value="<?php echo $_REQUEST['kw'] ?>" />
+				</div>
+				<div class="search_item">
+					公司：
+					<select name="q_company" class="select">
+						<option value="0" <?php echo $_REQUEST['q_company'] == 0 ? 'selected' : '' ?>>所有</option>
+						<?php foreach($companys as $company){ ?>
+						<option value="<?php echo $company['ID'] ?>" <?php echo $_REQUEST['q_company'] == $company['ID'] ? 'selected' : '' ?>><?php echo $company['GSMC'] ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				<div class="search_item">
+				    行业：
+					<select name="q_sshy" class="select">
+						<option value="0" <?php echo $_REQUEST['q_sshy'] == 0 ? 'selected' : '' ?>>所有</option>
+						<?php foreach($industryList as $item){ ?>
+						<option value="<?php echo $item['value'] ?>" <?php echo $_REQUEST['q_sshy'] == $item['value'] ? 'selected' : '' ?> ><?php echo $item['label'] ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				<div class="search_item">
+					薪酬：
+					<select name="q_xcxx" class="select">
+						<option value="0" <?php echo $_REQUEST['q_xcxx'] == 0 ? 'selected' : '' ?>>所有</option>
+						<?php foreach($xxList as $item){ ?>
+						<option value="<?php echo $item['value'] ?>" <?php echo $_REQUEST['q_xcxx'] == $item['value'] ? 'selected' : '' ?>  ><?php echo $item['label'] ?></option>
+						<?php } ?>
+					</select>
+					<select name="q_xcsx" class="select">
+						<option value="0" <?php echo $_REQUEST['q_xcsx'] == 0 ? 'selected' : '' ?>>所有</option>
+						<?php foreach($sxList as $item){ ?>
+						<option value="<?php echo $item['value'] ?>" <?php echo $_REQUEST['q_xcsx'] == $item['value'] ? 'selected' : '' ?> ><?php echo $item['label'] ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				
+			</div>
+			
+			
+			<div class="search_row">
+				<div class="search_item">
+					职位类型：
+					<select name="q_zwlx" class="select">
+						<option value="0" <?php echo $_REQUEST['q_zwlx'] == 0 ? 'selected' : '' ?>>所有</option>
+						<?php foreach($zwList as $item){ ?>
+						<option value="<?php echo $item['value'] ?>" <?php echo $_REQUEST['q_zwlx'] == $item['value'] ? 'selected' : '' ?> ><?php echo $item['label'] ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				
+				
+				<div class="search_item">
+				招聘有效期：<?php echo $at ?>- <?php echo $et ?>
+				</div>
+				<div class="search_item">
+				工作类型：
+				<select name="q_gzlx" class="select">
+					<option value="0" <?php echo $_REQUEST['q_gzlx'] == 0 ? 'selected' : '' ?>>所有</option>
+					<?php foreach($jobList as $item){ ?>
+					<option value="<?php echo $item['value'] ?>" <?php echo $_REQUEST['q_gzlx'] == $item['value'] ? 'selected' : '' ?> ><?php echo $item['label'] ?></option>
+					<?php } ?>
+				</select>
+				</div>
+				
+				
+			</div>
+			<div class="search_row">
+				<div class="search_item">
+				工作区域：
+				<select name="q_gzssqy" class="select">
+					<option value="0" <?php echo $_REQUEST['q_gzssqy'] == 0 ? 'selected' : '' ?>>所有</option>
+					<?php foreach($areasList as $item){ ?>
+					<option value="<?php echo $item['value'] ?>" <?php echo $_REQUEST['q_gzssqy'] == $item['value'] ? 'selected' : '' ?> ><?php echo $item['label'] ?></option>
+					<?php } ?>
+				</select>
+				</div>
+
+			</div>
+			
+		  	<input type="submit" name="search" value="搜索" class="button" />
+		</form>
+	</div>
+</div>
+<div class="control">
+	<ul>
+		<li class="s1"><a href="?m=jobs&a=add">添加</a></li>
+		<li class="l"></li>
+		<li class="s2"><a href="?m=jobs&a=index">管理</a></li>
+		<li class="l"></li>
+		<li class="s3"><a href="javascript:doEdit('?m=jobs&a=edit&id=')">編輯</a></li>
+		<li class="l"></li>
+		<li class="s4"><a href="javascript:doAction('del', '刪除')">刪除</a></li>
+		<li class="l"></li>
+		<li class="upload"><a class="dropz" href="#">导入</a></li>
+		<li class="l"></li>
+		<li class="download"><a href="?m=jobs&a=down">导出</a></li>
+		<li class="l"></li>
+		
+		
+		<li class="s5">
+			<a href="javascript:void(0)" id="order"><?php echo $odStr ?></a>
+			<span>
+				<a href="?m=jobs&a=index&by=ot&od=desc">排序時間 ↓ (默)</a>
+				<a href="?m=jobs&a=index&by=ot&od=asc">排序時間 ↑</a>
+			</span>
+			
+		</li>
+	</ul>
+</div>
+<form name="listform" id="listform" action="?m=jobs&a=" method="post">	
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="listtable" id="listtable">
+		<tr>
+		  	<td width="5%" align="center"><input type="checkbox" name="checkall" value="" onclick="checkAll()" /></td>
+            <td width="5%" align="center"><strong>职位编号</strong></td>			
+			<td width="5%" align="center"><strong>職位名稱</strong></td>
+			<td width="5%" align="center"><strong>行业</strong></td>
+			<td width="" align="center"><strong>职责</strong></td>
+			<td  align="center"><strong>薪酬</strong></td>
+			<td  align="center"><strong>工作区域</strong></td>
+			<td  align="center"><strong>招聘人数</strong></td>
+			<td align="center"><strong>有效期开始</strong></td>
+			<td  align="center"><strong>有效期结束</strong></td>
+			<td  align="center"><strong>职位类型</strong></td>
+			<td  align="center"><strong>工作类型</strong></td>
+			<td  align="center"><strong>公司</strong></td>
+			<td  align="center"><strong>操作</strong></td>
+		</tr>
+		<?php
+			foreach($hkSchoolList as $hkSchool){
+		?>
+		<tr>
+			<td align="center"><input type="checkbox" name="id[]" value="<?php echo $hkSchool['ID'] ?>" /></td>			
+			<td align="center"><?php echo $hkSchool['ZWBH'] ?></td>
+			<td align="center"><?php echo $hkSchool['ZWMC'] ?></td>
+			<td align="center"><?php echo $dict->label('industry_type',$hkSchool['SSHY']) ?></td>
+			<td align="center"><?php echo $hkSchool['ZZ'] ?></td>
+			<td align="center"><?php echo $dict->label('salary_xx',$hkSchool['XCXX']) ?></td>
+			<td align="center"><?php echo $dict->label('jobs_areas',$hkSchool['GZSSQY']) ?></td>
+			<td align="center"><?php echo $hkSchool['ZPRS'] ?></td>
+			<td align="center"><?php echo $hkSchool['YXQKS'] ?></td>
+			<td align="center"><?php echo $hkSchool['YXQJS'] ?></td>
+			<td align="center"><?php echo $dict->label('zw_type',$hkSchool['ZWLX']) ?></td>
+			<td align="center"><?php echo $dict->label('job_type',$hkSchool['GZLX']) ?></td>
+			<td align="center"><?php echo $dict->companyName($hkSchool['COMPANYID']) ?></td>
+			<td align="center"><a href="?m=jobs&a=edit&id=<?php echo $hkSchool['ID'] ?>">編輯</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="?m=jobs&a=del&id=<?php echo $hkSchool['ID'] ?>" onclick="return doDel()">刪除</a></td>
+		</tr>
+		<?php
+			}
+		?>
+	</table>
+</form>
+<div class="page">
+	<div class="num"><?php echo $page['num'] ?></div>
+	<?php echo $page['show'] ?>
+</div>
+<script >
+impFile("?m=jobs&a=upload",".xls,.xlsx",function(data){
+				//alert(data.msg);
+				
+			});
+
+</script>
+</body>
+</html>
