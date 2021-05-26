@@ -1,0 +1,89 @@
+2020-07-30 14:15:48,266 [+] [127.0.0.1:7001] Weblogic Version Is 10.3.6.0
+2020-07-30 14:15:48,267 [+] [172.19.19.19:7001] Weblogic Version Is 10.3.6.0
+2020-07-30 14:15:48,276 [+] [127.0.0.1:7001] Weblogic console address is exposed! The path is: http://127.0.0.1:7001/console/login/LoginForm.jsp
+2020-07-30 14:15:48,314 [+] [172.19.19.19:7001] Weblogic console address is exposed! The path is: http://172.19.19.19:7001/console/login/LoginForm.jsp
+2020-07-30 14:15:48,376 [+] [127.0.0.1:7001] Weblogic UDDI module is exposed! The path is: http://127.0.0.1:7001/uddiexplorer/
+2020-07-30 14:15:48,393 [+] [172.19.19.19:7001] Weblogic UDDI module is exposed! The path is: http://172.19.19.19:7001/uddiexplorer/
+2020-07-30 14:16:01,584 [+] [127.0.0.1:7001] weblogic has a JAVA deserialization vulnerability:CVE-2016-0638
+2020-07-30 14:16:01,598 [+] [172.19.19.19:7001] weblogic has a JAVA deserialization vulnerability:CVE-2016-0638
+2020-07-30 14:16:14,800 [-] [127.0.0.1:7001] weblogic not detected CVE-2016-3510
+2020-07-30 14:16:14,802 [-] [172.19.19.19:7001] weblogic not detected CVE-2016-3510
+2020-07-30 14:16:14,818 [-] [127.0.0.1:7001] weblogic not detected CVE-2017-10271
+2020-07-30 14:16:14,821 [-] [172.19.19.19:7001] weblogic not detected CVE-2017-10271
+2020-07-30 14:16:28,031 [-] [127.0.0.1:7001] weblogic not detected CVE-2017-3248
+2020-07-30 14:16:28,035 [-] [172.19.19.19:7001] weblogic not detected CVE-2017-3248
+2020-07-30 14:16:28,041 [-] [172.19.19.19:7001] weblogic not detected CVE-2017-3506
+2020-07-30 14:16:28,048 [-] [127.0.0.1:7001] weblogic not detected CVE-2017-3506
+2020-07-30 14:16:51,253 [+] [172.19.19.19:7001] weblogic has a JAVA deserialization vulnerability:CVE-2018-2628
+2020-07-30 14:16:51,261 [+] [127.0.0.1:7001] weblogic has a JAVA deserialization vulnerability:CVE-2018-2628
+2020-07-30 14:17:04,466 [+] [127.0.0.1:7001] weblogic has a JAVA deserialization vulnerability:CVE-2018-2893
+2020-07-30 14:17:04,471 [-] [127.0.0.1:7001] weblogic not detected CVE-2018-2894
+2020-07-30 14:17:04,609 [-] [127.0.0.1:7001] weblogic not detected CVE-2019-2725
+2020-07-30 14:17:06,381 [+] [172.19.19.19:7001] weblogic has a JAVA deserialization vulnerability:CVE-2018-2893
+2020-07-30 14:17:06,385 [-] [172.19.19.19:7001] weblogic not detected CVE-2018-2894
+2020-07-30 14:17:06,553 [-] [172.19.19.19:7001] weblogic not detected CVE-2019-2725
+2020-07-30 14:17:06,649 [-] [127.0.0.1:7001] weblogic not detected CVE-2019-2729
+2020-07-30 14:17:08,591 [-] [172.19.19.19:7001] weblogic not detected CVE-2019-2729
+2020-07-30 14:17:19,854 [+] [127.0.0.1:7001] weblogic has a JAVA deserialization vulnerability:CVE-2019-2890
+2020-07-30 14:17:21,805 [+] [172.19.19.19:7001] weblogic has a JAVA deserialization vulnerability:CVE-2019-2890
+2021-05-26 20:48:26,346 Error occurred during loading data. Trying to use cache server https://fake-useragent.herokuapp.com/browsers/0.1.11
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/urllib/request.py", line 1346, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.9/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.9/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.9/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.9/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.9/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3.9/http/client.py", line 1424, in connect
+    self.sock = self._context.wrap_socket(self.sock,
+  File "/usr/lib/python3.9/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/lib/python3.9/ssl.py", line 1040, in _create
+    self.do_handshake()
+  File "/usr/lib/python3.9/ssl.py", line 1309, in do_handshake
+    self._sslobj.do_handshake()
+socket.timeout: _ssl.c:1106: The handshake operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/fake_useragent/utils.py", line 64, in get
+    with contextlib.closing(urlopen(
+  File "/usr/lib/python3.9/urllib/request.py", line 214, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.9/urllib/request.py", line 517, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.9/urllib/request.py", line 534, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/usr/lib/python3.9/urllib/request.py", line 494, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.9/urllib/request.py", line 1389, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+  File "/usr/lib/python3.9/urllib/request.py", line 1349, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error _ssl.c:1106: The handshake operation timed out>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/fake_useragent/utils.py", line 154, in load
+    for item in get_browsers(verify_ssl=verify_ssl):
+  File "/usr/local/lib/python3.9/dist-packages/fake_useragent/utils.py", line 97, in get_browsers
+    html = get(settings.BROWSERS_STATS_PAGE, verify_ssl=verify_ssl)
+  File "/usr/local/lib/python3.9/dist-packages/fake_useragent/utils.py", line 84, in get
+    raise FakeUserAgentError('Maximum amount of retries reached')
+fake_useragent.errors.FakeUserAgentError: Maximum amount of retries reached
+2021-05-26 20:49:33,501 [-] [123.143.137.73:7001] Weblogic Version Recognition Failed
+2021-05-26 20:49:47,454 [+] [123.143.137.73:7001] weblogic has a JAVA deserialization vulnerability:CVE-2016-0638
+2021-05-26 20:50:00,929 [+] [123.143.137.73:7001] weblogic has a JAVA deserialization vulnerability:CVE-2016-3510
+2021-05-26 20:50:05,936 [-] [123.143.137.73:7001] weblogic not detected CVE-2017-10271
+2021-05-26 20:50:24,098 [-] [123.143.137.73:7001] weblogic not detected CVE-2017-3506
+2021-05-26 20:51:10,892 [-] [123.143.137.73:7001] weblogic not detected CVE-2018-2628
+2021-05-26 20:51:24,278 [+] [123.143.137.73:7001] weblogic has a JAVA deserialization vulnerability:CVE-2018-2893
+2021-05-26 20:51:39,404 [-] [123.143.137.73:7001] weblogic not detected CVE-2019-2890
